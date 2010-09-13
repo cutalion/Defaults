@@ -1,0 +1,5 @@
+See Defaults module lib/defaults.rb.
+Then check test/unit/user_test.rb and app/model/user.rb.
+
+The goal of the Defaults module is provide a DSL for defining defaults values
+for model's field.
