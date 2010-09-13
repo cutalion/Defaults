@@ -7,10 +7,6 @@ class User < ActiveRecord::Base
 
   serialize :config, Hash
 
-  def self.class_variable_get(symbol)
-    super(symbol)
-  end
-
   def name=(value)
     write_attribute(:name, "#{value}_#{config[:option]}")
   end

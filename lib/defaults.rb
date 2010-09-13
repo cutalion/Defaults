@@ -11,13 +11,17 @@ module Defaults
       defs = class_variable_defined?(:@@defaults) ? class_variable_get(:@@defaults) : {}
       class_variable_set(:@@defaults, defs.merge(name => values) )
     end
+
+    def get_defaults
+      class_variable_get(:@@defaults)
+    end
   end
 
 
   module InstanceMethods
     def attributes_from_column_definition_with_defaults
       attrs = attributes_from_column_definition_without_defaults
-      attrs.merge!(self.class.class_variable_get(:@@defaults).stringify_keys)
+      attrs.merge!(self.class.get_defaults.stringify_keys)
       attrs
     end
   end
