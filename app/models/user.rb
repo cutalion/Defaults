@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  DEFAULT_CONFIG = { :option => 'value' }
-
+  DEFAULT_CONFIG  = { :option => 'value' }
+  DEFAULT_GENDER  = 'male'
   include Defaults
 
-  
+  attr_accessor :gender
+
   defaults  :config, DEFAULT_CONFIG
+  defaults  :gender, DEFAULT_GENDER
   serialize :config, Hash
 
   def name=(value)
